@@ -1,0 +1,331 @@
+* {
+  padding: 0;
+  margin: 0;
+  text-decoration: none;
+  list-style: none;
+  box-sizing: border-box;
+}
+
+body {
+  font-family: Arial;
+}
+
+nav {
+  font-family: Arial;
+  background: #fcf1d6;
+  height: 90px;
+  width: 100%;
+}
+
+label.logo {
+  float: left;
+  color: black;
+  font-size: 35px;
+  line-height: 80px;
+  padding: 0 100px;
+  font-weight: bold;
+}
+
+nav ul {
+  float: right;
+  margin-top: 5px;
+  margin-right: 20px;
+}
+
+nav ul li {
+  display: inline-block;
+  line-height: 80px;
+  margin: 0 5px;
+}
+
+nav ul li a {
+  color: black;
+  font-size: 17px;
+  padding: 7px 13px;
+  border-radius: 3px;
+  text-transform: capitalize;
+}
+
+a.active {
+  background: #f7d685;
+  transition: .5s;
+  border-radius: 16px;
+}
+
+.home:hover {
+  background: #f7d685;
+  transition: .5s;
+  border-radius: 16px;
+}
+
+.about:hover {
+  background: #f7d685;
+  transition: .5s;
+  border-radius: 16px;
+}
+
+.register:hover {
+  background: #f7d685;
+  transition: .5s;
+  border-radius: 16px;
+}
+
+.read:hover {
+  background: #f7d685;
+  transition: .5s;
+  border-radius: 16px;
+}
+
+.checkbtn {
+  font-size: 30px;
+  color: #dd9a05;
+  float: right;
+  line-height: 80px;
+  margin-top: 5px;
+  margin-right: 40px;
+  cursor: pointer;
+  display: none;
+}
+
+#check {
+  display: none;
+}
+
+a {
+  text-transform: capitalize;
+  color: inherit;
+  text-decoration: inherit;
+}
+
+@media (max-width: 952px) {
+  label.logo {
+    padding-left: 40px;
+    padding-top: 40px;
+  }
+
+  nav ul li a {
+    font-size: 16px;
+  }
+}
+
+@media (max-width: 858px) {
+  .checkbtn {
+    display: block;
+  }
+
+  ul {
+    position: fixed;
+    width: 100%;
+    height: 100vh;
+    background: #fcf1d6;
+    top: 80px;
+    left: -100%;
+    text-align: center;
+    transition: all .5s;
+  }
+
+  nav ul li {
+    display: block;
+    margin: 50px 0;
+    line-height: 30px;
+  }
+
+  nav ul li a {
+    font-size: 20px;
+  }
+
+  a:hover, a.active {
+    background: none;
+    color: #dd9a05;
+  }
+
+  #check:checked~ul {
+    left: 0;
+  }
+}
+
+section {
+  background: url(bg1.jpg) no-repeat;
+  background-size: cover;
+  height: calc(100vh - 1px);
+}
+
+.wrapper {
+  width: 70%;
+  margin: 0 auto;
+  height: 100%;
+  display: block;
+}
+
+.link_bar {
+  color: #999;
+  text-align: center;
+  margin: 50px;
+}
+
+.link_food {
+  color: #999;
+}
+
+.recipe {
+  text-align: center;
+  margin: 60px;
+}
+
+img {
+  border-radius: 30px;
+}
+
+.recipe {
+  border: 1px solid #ccc;
+  border-radius: 30px;
+  padding: 20px;
+  margin-left: auto;
+  margin-right: auto;
+  text-align: left;
+  margin: 10;
+  width: 70%;
+}
+
+h1, h2, h3, h4, p {
+  padding-top: 20px;
+  margin: 10;
+}
+
+.articleImage {
+  display: block;
+  margin-left: auto;
+  margin-right: auto;
+  width: 50%;
+}
+
+.page-footer {
+
+  float: left;
+  width: 150%;
+  background:#fcf1d6;
+  padding-top: 25px;
+  margin-top: 80px;
+}
+
+.page-footer>.wrapper::after {
+
+  content: '.';
+  font-size: 0px;
+  height: 1px;
+  width: 100%;
+  clear: both;
+  display: block;
+}
+
+.footer-col {
+
+  float: left;
+  width: 25%;
+}
+
+.page-footer h3 {
+
+  font-size: 13px;
+  text-transform: uppercase;
+}
+
+.page-footer h3::after {
+
+  content: '.';
+  font-size: 0;
+  width: 90%;
+  height: 1px;
+  background: #292929;
+  display: block;
+  margin: 15px 0;
+}
+
+.page-footer li {
+  font-size: 13px;
+  color: #999;
+  line-height: 1.6;
+}
+
+.page-footer li a {
+  color: #999;
+  text-decoration: none;
+}
+
+.page-footer li a:hover {
+  color: black;
+  cursor: pointer;
+}
+
+.social a {
+  display: block;
+  width: 44px;
+  height: 44px;
+  border-radius: 50%;
+
+
+  text-align: center;
+  line-height: 44px;
+}
+
+
+
+.social li {
+  display: inline-block;
+}
+
+
+.fa {
+  padding: 20px;
+  font-size: 30px;
+  width: 50px;
+  text-align: center;
+  text-decoration: none;
+  margin: 5px 2px;
+}
+
+.fa-facebook {
+  background: #3B5998;
+  color: white;
+
+}
+
+.fa-twitter {
+  background: #55ACEE;
+  color: white;
+
+
+}
+
+.fa-linkedin {
+  background: #007bb5;
+  color: white;
+
+}
+
+.fa-youtube {
+  background: #bb0000;
+  color: white;
+
+}
+
+.fa-instagram {
+  background: #bc2a8d;
+  color: white;
+
+}
+
+.fa-pinterest {
+  background: #cb2027;
+  color: white;
+
+
+}
+
+.fa-snapchat-ghost {
+  background: #fffc00;
+  color: white;
+
+
+  text-shadow: -1px 0 black, 0 1px black, 1px 0 black, 0 -1px black;
+}
