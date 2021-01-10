@@ -1,0 +1,467 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.13.0/css/all.min.css">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+  <style>
+    * {
+      padding: 0;
+      margin: 0;
+      text-decoration: none;
+      list-style: none;
+      box-sizing: border-box;
+    }
+
+    body {
+      font-family: Arial;
+    }
+
+    nav {
+      font-family: Arial;
+      background: #fcf1d6;
+      height: 90px;
+      width: 100%;
+    }
+
+    label.logo {
+      float: left;
+
+      color: black;
+      font-size: 35px;
+      line-height: 80px;
+      padding: 0 100px;
+      font-weight: bold;
+    }
+
+    nav ul {
+      float: right;
+      margin-top: 5px;
+      margin-right: 20px;
+    }
+
+    nav ul li {
+      display: inline-block;
+      line-height: 80px;
+      margin: 0 5px;
+    }
+
+    nav ul li a {
+      color: black;
+      font-size: 17px;
+      padding: 7px 13px;
+      border-radius: 3px;
+      text-transform: capitalize;
+    }
+
+    a.active,
+    a:hover {
+      background: #f7d685;
+      transition: .5s;
+      border-radius: 16px;
+    }
+
+    .checkbtn {
+      font-size: 30px;
+      color: #dd9a05;
+      float: right;
+      line-height: 80px;
+      margin-top: 5px;
+      margin-right: 40px;
+      cursor: pointer;
+      display: none;
+    }
+
+    #check {
+      display: none;
+    }
+
+    a {
+      text-transform: capitalize;
+      color: inherit;
+      text-decoration: inherit;
+    }
+
+    @media (max-width: 952px) {
+      label.logo {
+        padding-left: 40px;
+        padding-top: 40px;
+
+      }
+
+      nav ul li a {
+        font-size: 16px;
+      }
+    }
+
+    @media (max-width: 858px) {
+      .checkbtn {
+        display: block;
+      }
+
+      ul {
+        position: fixed;
+        width: 100%;
+        height: 100vh;
+        background: #fcf1d6;
+        top: 80px;
+        left: -100%;
+        text-align: center;
+        transition: all .5s;
+      }
+
+      nav ul li {
+        display: block;
+        margin: 50px 0;
+        line-height: 30px;
+      }
+
+      nav ul li a {
+        font-size: 20px;
+      }
+
+      a:hover,
+      a.active {
+        background: none;
+        color: #dd9a05;
+      }
+
+      #check:checked~ul {
+        left: 0;
+      }
+    }
+
+    section {
+      background: url(bg1.jpg) no-repeat;
+      background-size: cover;
+      height: calc(100vh - 1px);
+    }
+
+
+    .wrapper {
+      width: 70%;
+      margin: 0 auto;
+      height: 100%;
+      display: block;
+    }
+
+
+    h1 {
+      padding-left: 500px;
+    }
+
+    .accordion {
+      background-color: white;
+      color: #444;
+      cursor: pointer;
+      padding: 18px;
+      padding-left: 100px;
+      width: 99%;
+      border: none;
+      text-align: middle;
+      outline: none;
+      font-size: 15px;
+      transition: 0.4s;
+    }
+
+    .active,
+    .accordion:hover {
+      background-color: #ccc;
+    }
+
+    .panel {
+      padding: 0px 18px;
+      display: none;
+      background-color: white;
+      overflow: hidden;
+      text-align: justify;
+      text-justify: inter-word;
+      line-height: 1.6;
+      padding-left: 100px;
+      padding-right: 200px;
+    }
+
+    .page-footer {
+
+      float: left;
+      width: 150%;
+      background: #fcf1d6;
+      padding-top: 25px;
+      margin-top: 80px;
+    }
+
+    .page-footer>.wrapper::after {
+
+      content: '.';
+      font-size: 0px;
+      height: 1px;
+      width: 100%;
+      clear: both;
+      display: block;
+    }
+
+    .footer-col {
+
+      float: left;
+      width: 25%;
+    }
+
+    .page-footer h3 {
+
+      font-size: 13px;
+      text-transform: uppercase;
+    }
+
+    .page-footer h3::after {
+
+      content: '.';
+      font-size: 0;
+      width: 90%;
+      height: 1px;
+      background: #292929;
+      display: block;
+      margin: 15px 0;
+    }
+
+    .page-footer li {
+      font-size: 13px;
+      color: #999;
+      line-height: 1.6;
+    }
+
+    .page-footer li a {
+      color: #999;
+      text-decoration: none;
+    }
+
+    .page-footer li a:hover {
+      color: black;
+      cursor: pointer;
+    }
+
+    .social a {
+      display: block;
+      width: 44px;
+      height: 44px;
+      border-radius: 50%;
+
+
+      text-align: center;
+      line-height: 44px;
+    }
+
+
+
+    .social li {
+      display: inline-block;
+    }
+
+
+    .fa {
+      padding: 20px;
+      font-size: 30px;
+      width: 50px;
+      text-align: center;
+      text-decoration: none;
+      margin: 5px 2px;
+    }
+
+    .fa-facebook {
+      background: #3B5998;
+      color: white;
+
+    }
+
+    .fa-twitter {
+      background: #55ACEE;
+      color: white;
+
+
+    }
+
+    .fa-linkedin {
+      background: #007bb5;
+      color: white;
+
+    }
+
+    .fa-youtube {
+      background: #bb0000;
+      color: white;
+
+    }
+
+    .fa-instagram {
+      background: #bc2a8d;
+      color: white;
+
+    }
+
+    .fa-pinterest {
+      background: #cb2027;
+      color: white;
+
+
+    }
+
+    .fa-snapchat-ghost {
+      background: #fffc00;
+      color: white;
+
+
+      text-shadow: -1px 0 black, 0 1px black, 1px 0 black, 0 -1px black;
+    }
+  </style>
+</head>
+
+<body>
+  <script src="https://kit.fontawesome.com/a076d05399.js"></script>
+  </head>
+
+  <body>
+    <nav>
+      <input type="checkbox" id="check">
+      <label for="check" class="checkbtn">
+        <i class="fas fa-bars"></i>
+      </label>
+      <img class="logo" src="Images\Project 1.1.png" alt="Logo" width="200">
+
+      <ul>
+        <li><a class="active" href="Home_page.html">Home</a></li>
+        <li><a href="Recipes_Before.html">Recipes</a></li>
+        <li><a href="About Us V2.html">About Us</a></li>
+        <li><a href="User_Login.html">Sign Up / Login</a></li>
+      </ul>
+    </nav>
+    <main>
+
+      <h1>TERMS & CONDITIONS OF FOOD CAPITAL</h1>
+
+      <button class="accordion">1. Subject of agreement</button>
+      <div class="panel">
+        <p>1.1 The App and the Services offer community functions and access to content (especially video) of AJNS and other users on the subject of cooking, which may be displayed in a newsfeed personalized for the User or accessed through a
+          category list or search functionality. The precise system requirements and the full scope of functions of the App are found in the product description on the distribution platform used to download the App (hereinafter the “App Store”). The
+          Services allow the entry and retrieval of content via a website.
+
+          <br><br> 1.2 The App is provided free of charge in the object code. Use of the community functions is also free of charge. The source code of the App is not the subject of this agreement.
+
+          <br><br> 1.3 Certain additional functions are only available for users with a paid Premium Account. Details are shown within the App. The Premium Account is subject to specific provisions within these Terms of Use.
+
+          <br><br> 1.4 AJNS reserves the right to provide further extended functions beyond those specified above, and run contests. This may be implemented through additional content within the app or through the in-App purchasing option of the
+          corresponding App Store. In addition to these Terms of Use, other special terms and conditions or contest terms, respectively, may apply, which will be communicated accordingly before the in-App purchase or before use of such additional
+          functions or participation in such contests, respectively. Use or or participation in such content or contests, respectively, is possible only after accepting such terms. The price and scope of functions of the corresponding in-App
+          purchases is shown always in the offer shown in the App.
+
+      </div>
+
+      <button class="accordion">2. Contract conclusion; optional registration</button>
+      <div class="panel">
+        <p>2.1 The contract for use of the App and the Services including the granting of the rights of use to the App comes into existence once the user clicks on the “install” button (may be called differently depending on the App Store) on the
+          product description page in the corresponding App Store and enters his/her password for that App Store; the T&C of the corresponding App Store apply to further details, if pertinent.
+
+          <br><br>2.2 The contract about the use of the community functions of the App and the Services come into existence as follows: By sending a fully completed registration form from the App or through the Kitchen Stories website, you are
+          concluding a contract. AJNS will confirm the receipt of the registration form. AJNS can accept the offer by switching on the community functions in the App and in the Services. However, there is not claim to contract conclusion.
+
+          <br><br>2.3 After registration, we explain to you via email the most important basic functions of the community. If you have opted in accordingly, we will also send you our newsletter, pointing out new features, products or content. You can
+          unsubscribe from the newsletter at any time, e.g. by selecting the unsubscribe link in each newsletter. You can subscribe to the newsletter again at any time.
+
+      </div>
+
+      <button class="accordion">3. Duration and cancellation; consequences of cancellation</button>
+      <div class="panel">
+        <p>3.1 Clarification: The App itself is made available for permanent use; the corresponding right of use cannot be canceled.
+
+          <br><br>3.2 The contract for the use of the underlying community functions and the Services is concluded for an undetermined period of time and may be terminated for convenience by either party at any time with a notice period of 7 days,
+          unless otherwise specified in this section 8.
+
+          <br><br>3.3 In deviation from Section 10.2 the special conditions for any time-limited premium functions acquired through in-App purchases may specify other periods for regular cancellation of the contract for the use of the underlying
+          community functions; unless special regulations are contained therein, the cancellation will become valid only once the contract period of the time-limited premium function ends.
+      </div>
+
+      <button class="accordion">4. Rights granted to the user</button>
+      <div class="panel">
+        <p>4.1 The user may not decompile the App or otherwise reverse engineer it or try to find out the source code. An exception to this are actions that are necessary to obtain interface information required to ensure interoperability of the App
+          with third-party software; this requires that the user has previously made unsuccessful attempts to find out such information from AJNS in exchange for an appropriate compensation of expenditures. Interface information obtained in this
+          manner may only be used for establishing interoperability, and may not be published, and may only be provided to third parties in the scope necessary for establishing such interoperability.
+      </div>
+
+      <button class="accordion">5. Final provisions</button>
+      <div class="panel">
+        <p>5.1 Place of jurisdiction The place of jurisdiction and performance is Berlin for (i) users who are not consumers, (ii) users who have no residence in Germany upon contract conclusion or move to another country after contract conclusion,
+          and (iii) users whose regular place of residence is unknown at the moment when a lawsuit is filed. Otherwise, the place of jurisdiction for consumers is based on the general rules.
+
+          <br><br>5.2 Dispute Resolution Information The European Commission offers an Online Dispute Resolution (ODR) Platform at http://ec.europa.eu/consumers/odr/. However, we are neither obliged nor willing to participate in a dispute resolution
+          procedure before a consumer mediation entity.
+
+          <br><br>5.3 Salvatory clause If a provision of this contract is or becomes invalid, the validity of the rest of this contract will not be affected. The parties agree, within reason and in good faith, to replace the invalid provision by a
+          permissible regulation that is equivalent in terms of economic outcome, as long as this does not result in any substantial changes of the contractual content.
+      </div>
+
+      <script>
+        var acc = document.getElementsByClassName("accordion");
+        var i;
+
+        for (i = 0; i < acc.length; i++) {
+          acc[i].addEventListener("click", function() {
+            this.classList.toggle("active");
+            var panel = this.nextElementSibling;
+            if (panel.style.display === "block") {
+              panel.style.display = "none";
+            } else {
+              panel.style.display = "block";
+            }
+          });
+        }
+      </script>
+      <footer class="page-footer">
+        <div class="wrapper">
+          <div class="footer-col">
+            <h3>Inquiries</h3>
+            <ul>
+              <li><a href="About Us V2.html">About Us</a></li>
+              <li><a href="Privacy Policy.html">Privacy</a></li>
+              <li><a href="Terms&Condtions.html">Terms & Conditions</a></li>
+            </ul>
+          </div>
+
+          <div class="footer-col">
+            <div class="footer-col social">
+              <h3>Connect</h3>
+              <ul>
+                <li><a href="https://pinterest.com" class="pinterest"><span style="font-size: 1.8rem;">
+                      <span style="color: red;">
+                        <i class="fab fa-pinterest"></a></i></span></span></li>
+              </ul>
+              <ul>
+                <li><a href="https://youtube.com" class="youtube"><span style="font-size: 1.8rem;">
+                      <span style="color: red;">
+                        <i class="fab fa-youtube"></a></i></span></span></li>
+              </ul>
+              <ul>
+                <li><a href="https://instagram.com" class="instagram"><span style="font-size: 1.8rem;">
+                      <span style="color: red;">
+                        <i class="fab fa-instagram"></a></i></span></span></li>
+              </ul>
+              <ul>
+                <li><a href="https://twitter.com" class="twitter"><span style="font-size: 1.8rem;">
+                      <span style="color: red;">
+                        <i class="fab fa-twitter"></a></i></span></span></li>
+              </ul>
+              <ul>
+                <li><a href="https://linkedin.com" class="linkedin"><span style="font-size: 1.8rem;">
+                      <span style="color: red;">
+                        <i class="fab fa-linkedin"></a></i></span></span></li>
+              </ul>
+
+            </div>
+          </div>
+          <div class="Copyright">
+
+            © 2020 Copyright: <a class="text-dark" href="#">Food Capital</a>
+          </div>
+      </footer>
+
+  </body>
+
+</html>
