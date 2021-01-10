@@ -1,0 +1,742 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <style media="screen">
+    * {
+      padding: 0;
+      margin: 0;
+      text-decoration: none;
+      list-style: none;
+      box-sizing: border-box;
+    }
+
+    body {
+      font-family: Arial;
+    }
+
+    nav {
+      font-family: Arial;
+      background: #fcf1d6;
+      height: 90px;
+      width: 100%;
+    }
+
+    label.logo {
+      float: left;
+      color: black;
+      font-size: 35px;
+      line-height: 80px;
+      padding: 0 100px;
+      font-weight: bold;
+    }
+
+    nav ul {
+      float: right;
+      margin-top: 5px;
+      margin-right: 20px;
+    }
+
+    nav ul li {
+      display: inline-block;
+      line-height: 80px;
+      margin: 0 5px;
+    }
+
+    nav ul li a {
+      color: black;
+      font-size: 17px;
+      padding: 7px 13px;
+      border-radius: 3px;
+      text-transform: capitalize;
+    }
+
+    a.active {
+      background: #f7d685;
+      transition: .5s;
+      border-radius: 16px;
+    }
+
+    .recipe:hover {
+      background: #f7d685;
+      transition: .5s;
+      border-radius: 16px;
+    }
+
+    .about:hover {
+      background: #f7d685;
+      transition: .5s;
+      border-radius: 16px;
+    }
+
+    .register:hover {
+      background: #f7d685;
+      transition: .5s;
+      border-radius: 16px;
+    }
+
+    .checkbtn {
+      font-size: 30px;
+      color: #dd9a05;
+      float: right;
+      line-height: 80px;
+      margin-top: 5px;
+      margin-right: 40px;
+      cursor: pointer;
+      display: none;
+    }
+
+    #check {
+      display: none;
+    }
+
+    section {
+      background: url(bg1.jpg) no-repeat;
+      background-size: cover;
+      height: calc(100vh - 1px);
+    }
+
+    .link_bar {
+      color: #999;
+      text-align: center;
+      margin: 60px;
+    }
+
+    .link_food {
+      color: #999;
+    }
+
+    a {
+      text-transform: capitalize;
+      color: inherit;
+      text-decoration: inherit;
+    }
+
+
+    .wrapper .radio_tabs {
+      margin-top: 100PX;
+      height: 60px;
+      background: #fff;
+      margin-bottom: 100px;
+      margin-left: auto;
+      border-radius: 5px;
+      font-size: 23px;
+      padding: 18px;
+      display: flex;
+      box-shadow: 0 0 2px rgba(0, 0, 0, 0.1);
+    }
+
+    .wrapper .radio_tabs label {
+      margin-right: 15px;
+      display: block;
+      position: relative;
+      cursor: pointer;
+      padding-left: 28px;
+    }
+
+    .wrapper .radio_tabs .radio_mark:before {
+      content: "";
+      position: absolute;
+      top: 2px;
+      left: 0;
+      background: url("Images/marker_icon.png") no-repeat 0 0;
+      width: 22px;
+      height: 22px;
+    }
+
+    .wrapper .radio_tabs label .input {
+      position: absolute;
+      top: 0;
+      right: 0;
+      opacity: 0;
+    }
+
+    .wrapper .radio_tabs label .input:checked~.radio_mark {
+      color: #dd9a05;
+    }
+
+    .wrapper .radio_tabs label .input:checked~.radio_mark:before {
+      background-position: 0 -23px;
+      width: 22px;
+      height: 22px;
+    }
+
+    .wrapper .content {
+      width: 100%;
+      height: calc(100% - 70px);
+      background: #fff;
+      border-radius: 5px;
+      padding: 18px;
+      box-shadow: 0 0 2px rgba(0, 0, 0, 0.1);
+    }
+
+    .wrapper .content p {
+      font-size: 15px;
+      line-height: 22px;
+      margin-bottom: 15px;
+    }
+
+    .content2 p {
+      font-size: 15px;
+      line-height: 22px;
+      margin-bottom: 15px;
+    }
+
+    .content3 p {
+      font-size: 15px;
+      line-height: 22px;
+      margin-bottom: 15px;
+    }
+
+    .wrapper {
+      width: 1300px;
+      height: auto;
+      margin: 10px auto;
+      margin-bottom: 50px;
+    }
+
+    .title {
+
+      font-family: Montserrat;
+      font-size: 150px;
+      color: white;
+      text-align: center;
+      /* margin-bottom:100px; */
+      padding: 150px;
+    }
+
+    .title h4 {
+      text-transform: capitalize;
+      font-size: 36px;
+      position: relative;
+      display: inline-block;
+      padding-bottom: 10px;
+    }
+
+    .title h4 span {
+      display: block;
+      font-size: 18px;
+      font-style: italic;
+      margin-bottom: 10px;
+    }
+
+    .title h4:before {
+      position: absolute;
+      content: "";
+      width: 100px;
+      height: 2px;
+      background-color: #dd9a05;
+      bottom: 0;
+      left: 50%;
+      transform: translateX(-50%);
+    }
+
+    .menu {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: space-between;
+    }
+
+    .single-menu {
+      flex-basis: 580px;
+      margin-bottom: 40px;
+      padding-bottom: 40px;
+      border-bottom: 1px solid #ddd;
+    }
+
+    .single-menu:nth-child(5),
+    .single-menu:nth-child(6) {
+      border-bottom: 0;
+    }
+
+    .single-menu {
+      display: flex;
+      flex-direction: row;
+      align-items: center;
+    }
+
+    .single-menu:hover img {
+      border-radius: 0;
+    }
+
+    .single-menu img {
+      max-width: 180px;
+      margin-right: 30px;
+      border-radius: 50%;
+      border: 1px solid #ddd;
+      padding: 3px;
+      transition: .5s;
+    }
+
+    .single-menu h4 {
+      text-transform: capitalize;
+      font-size: 22px;
+      border-bottom: 1px dashed #333;
+      margin-bottom: 5px;
+      padding-bottom: 5px;
+    }
+
+    .single-menu h4 span {
+      float: right;
+      color: #ff7720;
+      font-style: italic;
+    }
+
+    form.example input[type=text] {
+      position: absolute;
+      left: 35%;
+      top: 32%;
+      width: 20%;
+      height: 5%;
+      background-color: white;
+      color: grey;
+    }
+
+    form.example button {
+      position: absolute;
+      left: 55%;
+      top: 32%;
+      width: 5%;
+      height: 5%;
+      background-color: white;
+      color: grey;
+      padding: 10px;
+      background: #2196F3;
+      color: white;
+      font-size: 17px;
+      border: 1px solid grey;
+      border-left: none;
+      cursor: pointer;
+    }
+
+    form.example button:hover {
+      background: #0b7dda;
+    }
+
+    form.example::after {
+      content: "";
+      clear: both;
+      display: table;
+    }
+
+    .page-footer{
+      margin-left: -250px;
+    }
+
+    .page-footer .wrapper {
+      width: 70%;
+      margin: 0 auto;
+      height: 100%;
+      display: block;
+    }
+
+    .page-footer {
+
+      float: left;
+      width: 170%;
+      background: #fcf1d6;
+      padding-top: 25px;
+      margin-top: 80px;
+    }
+
+    .page-footer>.wrapper::after {
+
+      content: '.';
+      font-size: 0px;
+      height: 1px;
+      width: 100%;
+      clear: both;
+      display: block;
+    }
+
+    .footer-col {
+
+      float: left;
+      width: 25%;
+    }
+
+    .page-footer h3 {
+
+      font-size: 13px;
+      text-transform: uppercase;
+    }
+
+    .page-footer h3::after {
+
+      content: '.';
+      font-size: 0;
+      width: 90%;
+      height: 1px;
+      background: #292929;
+      display: block;
+      margin: 15px 0;
+    }
+
+    .page-footer li {
+      font-size: 13px;
+      color: #999;
+      line-height: 1.6;
+    }
+
+    .page-footer li a {
+      color: #999;
+      text-decoration: none;
+    }
+
+    .page-footer li a:hover {
+      color: black;
+      cursor: pointer;
+    }
+
+    .social a {
+      display: block;
+      width: 44px;
+      height: 44px;
+      border-radius: 50%;
+
+
+      text-align: center;
+      line-height: 44px;
+    }
+
+
+    .social li {
+      display: inline-block;
+    }
+
+
+    .fa {
+      padding: 20px;
+      font-size: 30px;
+      width: 50px;
+      text-align: center;
+      text-decoration: none;
+      margin: 5px 2px;
+    }
+
+    .fa-facebook {
+      background: #3B5998;
+      color: white;
+
+    }
+
+    .fa-twitter {
+      background: #55ACEE;
+      color: white;
+
+
+    }
+
+    .fa-linkedin {
+      background: #007bb5;
+      color: white;
+
+    }
+
+    .fa-youtube {
+      background: #bb0000;
+      color: white;
+
+    }
+
+    .fa-instagram {
+      background: #bc2a8d;
+      color: white;
+
+    }
+
+    .fa-pinterest {
+      background: #cb2027;
+      color: white;
+
+
+    }
+
+    .fa-snapchat-ghost {
+      background: #fffc00;
+      color: white;
+
+
+      text-shadow: -1px 0 black, 0 1px black, 1px 0 black, 0 -1px black;
+    }
+
+    .headerSection {
+      /* border: 10px solid #ccc; */
+      background-image: url(https://images.pexels.com/photos/4252133/pexels-photo-4252133.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=650&w=940);
+      background-size: cover;
+      background-attachment: fixed;
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      max-width: 100%;
+    }
+
+    h2 {
+      color: #444;
+    }
+
+    .read:hover {
+      background: #f7d685;
+      transition: .5s;
+      border-radius: 16px;
+    }
+  </style>
+
+  <script src="https://kit.fontawesome.com/a076d05399.js"></script>
+  <script src="https://code.jquery.com/jquery-3.5.1.min.js"></script>
+  <script>
+
+  </script>
+
+</head>
+
+<body>
+  <nav>
+    <input type="checkbox" id="check">
+    <label for="check" class="checkbtn">
+      <i class="fas fa-bars"></i>
+    </label>
+    <img class="logo" src="Images\Project 1.1.png" alt="Logo" width="200">
+
+    <ul>
+      <li><a class="active" href="Home_page.html">Home</a></li>
+      <li><a class="recipe" href="Recipes.html">Recipes</a></li>
+      <li><a class="about" href="About Us V2.html">About Us</a></li>
+      <li><a class="register" href="User_Registration.html">Sign Up / Login</a></li>
+    </ul>
+  </nav>
+  <main>
+
+
+    <section>
+      <div class="headerSection">
+        <div class="title">
+          Find your favourite recipes here
+        </div>
+      </div>
+
+      <div class="wrapper">
+        <div class="radio_tabs">
+          <label class="radio_wrap" data-radio="radio_1">
+            <input type="radio" name="sports" class="input" checked>
+            <span class="radio_mark">
+
+              <a href="#FavouriteRecipes">Favourite Recipes</a>
+            </span>
+          </label>
+          <label class="radio_wrap" data-radio="radio_4">
+            <input type="radio" name="sports" class="input">
+            <span class="radio_mark">
+
+              <a href="#LatestRecipes">Latest Recipes</a>
+            </span>
+          </label>
+          <label class="radio_wrap" data-radio="radio_5">
+            <input type="radio" name="sports" class="input">
+            <span class="radio_mark">
+
+              <a href="#MostViewedRecipes">Most Viewed Recipes</a>
+            </span>
+          </label>
+          <label class="radio_wrap" data-radio="radio_6">
+            <input type="radio" name="sports" class="input">
+            <span class="radio_mark">
+
+              <a href="#DinnerForTheWeek">Dinner For The Week</a>
+          </label>
+          <label class="radio_wrap" data-radio="radio_6">
+            <input type="radio" name="sports" class="input">
+            <span class="radio_mark">
+
+              <a href="#PerfectForFamily">Perfect For Family</a>
+          </label>
+          <label class="radio_wrap" data-radio="radio_6">
+            <input type="radio" name="sports" class="input">
+            <span class="radio_mark">
+        </div>
+        <div id="FavouriteRecipes">
+          <h2>Favourite Recipes</h2>
+          <br><br>
+          <div class="single-menu">
+            <img src="Images\Appetizer2(1).jpg" alt="">
+            <div class="menu-content">
+              <h4>Hawaiian Cheese Bread<span>Alam</span></h4>
+              <p>Cut bread diagonally into 1-in. slices to within 1 in. of bottom. Repeat cuts in opposite direction.</p>
+              <a class="read" href="appetizers2.html">Read More</a>
+            </div>
+          </div>
+          <div class="single-menu">
+            <img src="Images\Entree2(1).jpg" alt="">
+            <div class="menu-content">
+              <h4>Fragrant Vietnamese beef noodle soup <span>Alijku</span></h4>
+              <p>This is a quick version of pho – a wonderful soup made with beef or chicken that the Vietnamese eat for dinner,</p>
+              <a class="read" href="entree2.html">Read More</a>
+            </div>
+          </div>
+        </div>
+
+        <div id="FavouriteRecipes">
+          <h2>Favourite Recipes</h2>
+          <br><br>
+          <div class="single-menu">
+            <img src="Images\western2(1).jpg" alt="">
+            <div class="menu-content2">
+              <h4>20-M Smothered Beef <span>Pillsbury</span></h4>
+              <p>Stir in tortilla strips; top with cheese. Cover skillet; set aside 3 to 4 minutes or until cheese is melted.</p>
+              <a class="read" href="westernFood2.html">Read More</a>
+            </div>
+          </div>
+          <div class="single-menu">
+            <img src="Images\african1(1).jpg" alt="">
+            <div class="menu-content2">
+              <h4>Harissa<span>Kinchi Karg</span></h4>
+              <p>Harissa is a versatile spicy North African paste, a fiery flavourful condiment perfect for meat, seafood, soup or salad.</p>
+              <a class="read" href="africanFood1.html">Read More</a>
+            </div>
+          </div>
+        </div>
+
+        <div id="LatestRecipes">
+          <h2>Latest Recipes</h2>
+          <br><br>
+          <div class="single-menu">
+            <img src="Images\easy1(1).jpg" alt="">
+            <div class="menu-content3">
+              <h4>Herbes de Provence Shrim<span>Erika</span></h4>
+              <p>Cook couscous per package directions. Fold in peas, basil, lemon zest, and 1 tablespoon oil.</p>
+              <a class="read" href="easyRecipe1.html">Read More</a>
+            </div>
+          </div>
+
+          <div class="single-menu">
+            <img src="Images\easy2(1).jpg" alt="">
+            <div class="menu-content3">
+              <h4>30-MINUTE CARAMELIZED CHICKEN VEGETABLE STIR FRY<span></span></h4>
+              <p>Pour 3 tbsp of Marie’s Market Reserve Caramelized Onion & Sesame Seed Dressing in a medium bowl and add in the chicken breast tenderloin...</p>
+              <a class="read" href="easyRecipe2.html">Read More</a>
+            </div>
+          </div>
+        </div>
+
+        <div id="MostViewedRecipes">
+          <h2>Most Viewed Recipes</h2>
+          <br><br>
+          <div class="single-menu">
+            <img src="Images\asian1(1).jpg" alt="">
+            <div class="menu-content2">
+              <h4>Vietnamese Chicken Salad<span>Nagi</span></h4>
+              <p>Chicken salads can be so dull …… but not when it’s Vietnamese-style! This slaw-like Vietnamese Chicken Salad is everything you love about Vietnamese food...</p>
+              <a class="read" href="asianFood1.html">Read More</a>
+            </div>
+          </div>
+
+          <div class="single-menu">
+            <img src="Images\asian2(1).jpg" alt="">
+            <div class="menu-content2">
+              <h4>Chop Suey (Chicken Stir Fry)<span>Nagi</span></h4>
+              <p>Chop Suey – a saucy chicken stir fry loaded with tender pieces of chicken,</p>
+              <a class="read" href="asianFood2.html">Read More</a>
+            </div>
+          </div>
+        </div>
+
+        <div id="DinnerForTheWeek">
+          <h2>Dinner For The Week</h2>
+          <br><br>
+          <div class="single-menu">
+            <img src="Images\western1(1).jpg" alt="">
+            <div class="menu-content2">
+              <h4>Easy Baked Chicken<span>Pillsbury</span></h4>
+              <p>Pour melted margarine over chicken and vegetables. In small bowl, combine cheese,</p>
+              <a class="read" href="westernFood1.html">Read More</a>
+            </div>
+          </div>
+
+          <div class="single-menu">
+            <img src="Images\western2(1).jpg" alt="">
+            <div class="menu-content2">
+              <h4>20-M Smothered Beef <span>Pillsbury</span></h4>
+              <p>Stir in tortilla strips; top with cheese. Cover skillet; set aside 3 to 4 minutes or until cheese is melted.</p>
+              <a class="read" href="westernFood2.html">Read More</a>
+            </div>
+          </div>
+        </div>
+
+        <div id="PerfectForFamily">
+          <h2>Perfect For Family</h2>
+          <br><br>
+          <div class="single-menu">
+            <img src="Images\Snacks2(1).jpg" alt="">
+            <div class="menu-content">
+              <h4>Warm Roasted<span>Paki Khi</span></h4>
+              <p>Warm Roasted Cauliflower and Spinach Salad</p>
+              <a class="read" href="snacks2.html">Read More</a>
+            </div>
+          </div>
+          <div class="single-menu">
+            <img src="Images\Snacks1(1).jpg" alt="">
+            <div class="menu-content">
+              <h4>Hot Pepper and Onion Pizza<span>kuyta</span></h4>
+              <p>On a lightly floured surface, shape the pizza dough into a 14-in. oval.</p>
+              <a class="read" href="snacks1.html">Read More</a>
+            </div>
+          </div>
+        </div>
+
+        <footer class="page-footer">
+          <div class="wrapper">
+            <div class="footer-col">
+              <h3>Inquiries</h3>
+              <ul>
+                <li><a href="About Us V2.html">About Us</a></li>
+                <li><a href="Privacy Policy.html">Privacy</a></li>
+                <li><a href="Terms&Condtions.html">Terms & Conditions</a></li>
+              </ul>
+            </div>
+
+            <div class="footer-col">
+              <div class="footer-col social">
+                <h3>Connect</h3>
+                <ul>
+                  <li><a href="https://pinterest.com" class="pinterest"><span style="font-size: 1.8rem;">
+                        <span style="color: red;">
+                          <i class="fab fa-pinterest"></a></i></span></span></li>
+                </ul>
+                <ul>
+                  <li><a href="https://youtube.com" class="youtube"><span style="font-size: 1.8rem;">
+                        <span style="color: red;">
+                          <i class="fab fa-youtube"></a></i></span></span></li>
+                </ul>
+                <ul>
+                  <li><a href="https://instagram.com" class="instagram"><span style="font-size: 1.8rem;">
+                        <span style="color: red;">
+                          <i class="fab fa-instagram"></a></i></span></span></li>
+                </ul>
+                <ul>
+                  <li><a href="https://twitter.com" class="twitter"><span style="font-size: 1.8rem;">
+                        <span style="color: red;">
+                          <i class="fab fa-twitter"></a></i></span></span></li>
+                </ul>
+                <ul>
+                  <li><a href="https://linkedin.com" class="linkedin"><span style="font-size: 1.8rem;">
+                        <span style="color: red;">
+                          <i class="fab fa-linkedin"></a></i></span></span></li>
+                </ul>
+
+              </div>
+            </div>
+            <div class="Copyright">
+
+              © 2020 Copyright: <a class="text-dark" href="#">Food Capital</a>
+            </div>
+        </footer>
+
+    </section>
+
+  </main>
+
+</body>
+
+</html>
